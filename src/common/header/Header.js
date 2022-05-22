@@ -186,8 +186,6 @@ const Header = function (props) {
     }
     // Logout Code //
 
-    console.log(window.sessionStorage.getItem('access-token'));
-
     // Button Value //
     // State for Button
     const [addButtonForm, setButtonForm] = useState({
