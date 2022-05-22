@@ -21,12 +21,6 @@ const Details = ({ match }) => {
 
     const [youtubeList, setYoutubeList] = useState("");
 
-    let videoCode;
-
-    if (youtubeList) {
-        videoCode = youtubeList.split("v=")[1].split("&")[0];
-    }
-
     useEffect(() => {
         MovieDetails(match.params.id);
     }, []);
@@ -55,6 +49,12 @@ const Details = ({ match }) => {
         }
     }
     // Fetch data for Movie Details //
+
+    let videoCode;
+
+    if (youtubeList) {
+        videoCode = youtubeList.split("v=")[1].split("&")[0];
+    }
 
     return (
         <React.Fragment>
