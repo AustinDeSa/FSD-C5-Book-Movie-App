@@ -17,17 +17,11 @@
 
 .home-container {
     display: flex;
-    flex-basis: fit-content;
 }
 
 .search-btn {
     border-radius: 4px !important;
     width: 240px;
-}
-
-.input-search {
-    min-Width: 240px !important;
-    max-Width: 240px !important;
 }
 
 .home-grid-tile {

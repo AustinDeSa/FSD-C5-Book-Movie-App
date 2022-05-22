@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Header from "../../common/header/Header";
 import "./Home.css";
-import { GridList, GridListTile, GridListTileBar, Card, Button, FormControl, InputLabel, Input, Checkbox, TextField, MenuItem } from '@material-ui/core';
+import { GridList, GridListTile, GridListTileBar, Card, Button, FormControl, InputLabel, Input, Checkbox, TextField, MenuItem, CardContent } from '@material-ui/core';
 import Moment from 'moment';
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
@@ -22,17 +22,19 @@ const gridList = {
     transform: 'translateZ(0)',
 };
 
-const gridList2 = {
-    transform: 'translateZ(0)',
-};
-
 const useStyles = makeStyles(theme => ({
     cardtitle: {
         color: theme.palette.primary.light,
         margin: theme.spacing(1),
+        textTransform: "uppercase",
     },
     maincard: {
         margin: theme.spacing(1),
+        minWidth: 240,
+        maxWidth: 240,
+    },
+    root: {
+        width: "max-content",
     },
 }));
 
@@ -120,35 +122,33 @@ const Home = function ({ genreList, artistList, moviesList, moviesFilterdList, m
             </div>
             <div className='home-container'>
                 <div className='home-search-movies'>
-                    <div style={mainGrid}>
-                        <GridList style={gridList2} cols={4} cellHeight={350}>
-                            {moviesFilterdList.map(filmovies => (
-                                <GridListTile key={filmovies.id} className="home-grid-tile" component={Link} to={`/movie/${filmovies.id}`}>
-                                    <img src={filmovies.poster_url} alt={filmovies.title} />
-                                    <GridListTileBar
-                                        title={filmovies.title}
-                                        subtitle={"Release Date " + Moment(filmovies.release_date).format('ddd MMM DD yyyy')}
-                                    />
-                                </GridListTile>
-                            ))}
-                        </GridList>
-                    </div>
+                    <GridList cols={4} cellHeight={350}>
+                        {moviesFilterdList.map(filmovies => (
+                            <GridListTile key={filmovies.id} className="home-grid-tile" component={Link} to={`/movie/${filmovies.id}`}>
+                                <img src={filmovies.poster_url} alt={filmovies.title} />
+                                <GridListTileBar
+                                    title={filmovies.title}
+                                    subtitle={"Release Date " + Moment(filmovies.release_date).format('ddd MMM DD yyyy')}
+                                />
+                            </GridListTile>
+                        ))}
+                    </GridList>
                 </div>
                 <div className='home-search-filter'>
-                    <Card>
-                        <form className="search-form" onSubmit={onSearchFormSubmitted}>
-                            <div className={classes.maincard}>
+                    <Card raised={true} className={classes.root}>
+                        <CardContent>
+                            <form onSubmit={onSearchFormSubmitted}>
                                 <div className={classes.cardtitle}>
                                     FIND MOVIES BY:
                                 </div>
-                                <div className={classes.maincard}>
+                                <div>
                                     <FormControl>
-                                        <InputLabel htmlFor="my-input-name">Movie Name</InputLabel>
+                                        <InputLabel htmlFor="my-input-name" className={classes.maincard}>Movie Name</InputLabel>
                                         <Input id="my-input-name" aria-describedby="my-helper-text" name="moviename" type='text'
-                                            onChange={inputFilterChangedHandler} className="input-search" value={moviename} />
+                                            onChange={inputFilterChangedHandler} className={classes.maincard} value={moviename} />
                                     </FormControl><br /><br />
                                     <FormControl>
-                                        <Autocomplete className="input-search" onChange={handleGenresChange}
+                                        <Autocomplete className={classes.maincard} onChange={handleGenresChange}
                                             name="gen" multiple id="my-input-genre" size="small"
                                             options={genreList} getOptionLabel={option => option.genre}
                                             disableCloseOnSelect
@@ -164,7 +164,7 @@ const Home = function ({ genreList, artistList, moviesList, moviesFilterdList, m
                                         />
                                     </FormControl><br /><br />
                                     <FormControl>
-                                        <Autocomplete className="input-search" onChange={handleArtistChange}
+                                        <Autocomplete className={classes.maincard} onChange={handleArtistChange}
                                             name="art" multiple id="my-input-art" size="small"
                                             options={artistList} getOptionLabel={option => option.first_name + ' ' + option.last_name}
                                             disableCloseOnSelect
@@ -180,21 +180,21 @@ const Home = function ({ genreList, artistList, moviesList, moviesFilterdList, m
                                         />
                                     </FormControl><br /><br />
                                     <FormControl>
-                                        <InputLabel htmlFor="my-input-startdate" shrink={true}>Release Date Start</InputLabel>
+                                        <InputLabel htmlFor="my-input-startdate" shrink={true} className={classes.maincard}>Release Date Start</InputLabel>
                                         <TextField id="my-input-startdate" aria-describedby="my-helper-text" name="startdate" type='date'
-                                            onChange={inputFilterChangedHandler} className="input-search" value={startdate} />
+                                            onChange={inputFilterChangedHandler} className={classes.maincard} value={startdate} />
                                     </FormControl><br /><br />
                                     <FormControl>
-                                        <InputLabel htmlFor="my-input-enddate" shrink={true}>Release Date End</InputLabel>
+                                        <InputLabel htmlFor="my-input-enddate" shrink={true} className={classes.maincard}>Release Date End</InputLabel>
                                         <TextField id="my-input-enddate" aria-describedby="my-helper-text" name="enddate" type='date'
-                                            onChange={inputFilterChangedHandler} className="input-search" value={enddate} />
+                                            onChange={inputFilterChangedHandler} className={classes.maincard} value={enddate} />
                                     </FormControl><br /><br />
                                 </div>
                                 <div className={classes.maincard}>
-                                    <Button type="submit" variant="contained" color="primary" className='input-search search-btn'>APPLY</Button>
+                                    <Button type="submit" variant="contained" color="primary" className='search-btn'>APPLY</Button>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </CardContent>
                     </Card>
                 </div>
             </div>
