@@ -1,0 +1,30 @@
+.btn-back {
+    margin: 8px 0px 0px 24px !important;
+    cursor: pointer;
+    height: 24px;
+}
+
+Button:hover,
+Button:focus {
+    cursor: pointer;
+}
+
+.space-top {
+    margin-top: 16px !important;
+}
+
+.poster-main {
+    text-Align: center;
+}
+
+.poster-img {
+    max-width: 100%;
+}
+
+.details-container-mid {
+    padding: 0px 20px 0px 20px;
+}
+
+.space-top-bottom {
+    margin: 16px 0px 16px 0px !important;
+}
