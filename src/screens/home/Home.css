@@ -1,0 +1,40 @@
+.home-header {
+    background-color: #ff9999;
+    text-align: center;
+    font-size: 1rem;
+    padding: 8px;
+}
+
+.home-search-movies {
+    flex-basis: 76%;
+    margin: 16px;
+}
+
+.home-search-filter {
+    flex-basis: 24%;
+    margin: 16px;
+}
+
+.home-container {
+    display: flex;
+    flex-basis: fit-content;
+}
+
+.search-btn {
+    border-radius: 4px !important;
+    width: 240px;
+}
+
+.input-search {
+    min-Width: 240px !important;
+    max-Width: 240px !important;
+}
+
+.home-grid-tile {
+    cursor: pointer;
+}
+
+#my-input-enddate,
+#my-input-startdate {
+    margin-top: 15px !important;
+}
