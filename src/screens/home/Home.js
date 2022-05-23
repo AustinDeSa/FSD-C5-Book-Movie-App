@@ -143,7 +143,7 @@ const Home = function ({ genreList, artistList, moviesList, moviesFilterdList, m
                                 </div>
                                 <div>
                                     <FormControl>
-                                        <InputLabel htmlFor="my-input-name" className={classes.maincard}>Movie Name</InputLabel>
+                                        <InputLabel htmlFor="my-input-name" className={classes.maincard}>Movie Name</InputLabel><br />
                                         <Input id="my-input-name" aria-describedby="my-helper-text" name="moviename" type='text'
                                             onChange={inputFilterChangedHandler} className={classes.maincard} value={moviename} />
                                     </FormControl><br /><br />
