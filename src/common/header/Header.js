@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Header.css';
 import logo from '../../assets/logo.svg';
-import { Tab, Tabs, Button } from "@material-ui/core";
+import { Tab, Tabs, Button, FormControl } from "@material-ui/core";
 import PropTypes from 'prop-types';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { useHistory } from 'react-router-dom';
@@ -189,7 +189,7 @@ const Header = function (props) {
     // Button Value //
     // State for Button
     const [addButtonForm, setButtonForm] = useState({
-        btn_name: window.sessionStorage.getItem('access-token') === null ? 'LOGIN' : 'LOGOUT',
+        btn_name: window.sessionStorage.getItem('access-token') === null || window.sessionStorage.getItem('access-token') === 'null' ? 'LOGIN' : 'LOGOUT',
     });
 
     const { btn_name } = addButtonForm;
@@ -252,40 +252,53 @@ const Header = function (props) {
                         </div>
                         <TabPanel value={value} index={0}>
                             <ValidatorForm className="login-form" onSubmit={onLoginFormSubmitted}>
-                                <TextValidator id="username" label="Username *" type="text" name="email"
-                                    validators={['required']} errorMessages={['Required']} onChange={inputLoginChangedHandler}
-                                    value={email} className="input-control">
-                                </TextValidator><br /><br />
-                                <TextValidator id="password" label="Password *" type="password" name="pass_word"
-                                    validators={['required']} errorMessages={['Required']} onChange={inputLoginChangedHandler}
-                                    value={pass_word} className="input-control">
-                                </TextValidator><br /><br />
-
+                                <FormControl>
+                                    <TextValidator id="username" label="Username *" type="text" name="email"
+                                        validators={['required']} errorMessages={['Required']} onChange={inputLoginChangedHandler}
+                                        value={email} className="input-control">
+                                    </TextValidator>
+                                </FormControl><br /><br />
+                                <FormControl>
+                                    <TextValidator id="password" label="Password *" type="password" name="pass_word"
+                                        validators={['required']} errorMessages={['Required']} onChange={inputLoginChangedHandler}
+                                        value={pass_word} className="input-control">
+                                    </TextValidator>
+                                </FormControl><br /><br />
                                 <button type="submit" className="custom-btn login-btn">LOGIN</button>
                             </ValidatorForm>
                         </TabPanel>
                         <TabPanel value={value} index={1}>
                             <ValidatorForm className="register-form" onSubmit={onRegisterFormSubmitted}>
-                                <TextValidator id="firstname" label="First Name *" type="text" name="first_name"
-                                    validators={['required']} errorMessages={['Required']} onChange={inputRegChangedHandler}
-                                    value={first_name} className="input-control">
-                                </TextValidator><br /><br />
-                                <TextValidator id="lastname" label="Last Name *" type="text" name="last_name"
-                                    validators={['required']} errorMessages={['Required']} onChange={inputRegChangedHandler}
-                                    value={last_name} className="input-control">
-                                </TextValidator><br /><br />
-                                <TextValidator id="email" label="Email *" type="email" name="email_address"
-                                    validators={['required']} errorMessages={['Required']} onChange={inputRegChangedHandler}
-                                    value={email_address} className="input-control">
-                                </TextValidator><br /><br />
-                                <TextValidator id="password" label="Password *" type="password" name="password"
-                                    validators={['required']} errorMessages={['Required']} onChange={inputRegChangedHandler}
-                                    value={password} className="input-control">
-                                </TextValidator><br /><br />
-                                <TextValidator id="contact" label="Contact No *" type="number" name="mobile_number"
-                                    validators={['required']} errorMessages={['Required']} onChange={inputRegChangedHandler}
-                                    value={mobile_number} className="input-control">
-                                </TextValidator><br /><br />
+                                <FormControl>
+                                    <TextValidator id="firstname" label="First Name *" type="text" name="first_name"
+                                        validators={['required']} errorMessages={['Required']} onChange={inputRegChangedHandler}
+                                        value={first_name} className="input-control">
+                                    </TextValidator>
+                                </FormControl><br /><br />
+                                <FormControl>
+                                    <TextValidator id="lastname" label="Last Name *" type="text" name="last_name"
+                                        validators={['required']} errorMessages={['Required']} onChange={inputRegChangedHandler}
+                                        value={last_name} className="input-control">
+                                    </TextValidator>
+                                </FormControl><br /><br />
+                                <FormControl>
+                                    <TextValidator id="email" label="Email *" type="email" name="email_address"
+                                        validators={['required']} errorMessages={['Required']} onChange={inputRegChangedHandler}
+                                        value={email_address} className="input-control">
+                                    </TextValidator>
+                                </FormControl><br /><br />
+                                <FormControl>
+                                    <TextValidator id="password" label="Password *" type="password" name="password"
+                                        validators={['required']} errorMessages={['Required']} onChange={inputRegChangedHandler}
+                                        value={password} className="input-control">
+                                    </TextValidator>
+                                </FormControl><br /><br />
+                                <FormControl>
+                                    <TextValidator id="contact" label="Contact No *" type="number" name="mobile_number"
+                                        validators={['required']} errorMessages={['Required']} onChange={inputRegChangedHandler}
+                                        value={mobile_number} className="input-control">
+                                    </TextValidator>
+                                </FormControl><br /><br />
 
                                 <label hidden={label_value}>Registration Succesful. Please Login!</label><br /><br />
 
